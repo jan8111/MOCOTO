@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>mocoto</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div    th:object="${simReq}">
+    title：<div type="text" name="title"  th:text="${simReq?.title}" />
+    path：<div type="text" name="path"  th:text="${simReq?.path}" />
+   成功删除
+    <input type="button" value="close" onclick="window.close();"/>
+</div>
+
+
+</body>
+</html>

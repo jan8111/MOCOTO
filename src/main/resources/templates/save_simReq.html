@@ -10,21 +10,44 @@
 <body>
 
 <form th:action="@{/simReqSave}" th:method="post" th:object="${simReq}">
-    <input type="hidden" name="id" th:value="*{id}"/>
-    title：<input type="text" name="title"  th:value="*{title}"/>
-    path：<input type="text" name="path"  th:value="*{path}"/>
+    <input type="hidden" name="id" th:value="${simReq?.id}"/>
+    title：<input type="text" name="title"  th:value="${simReq?.title}"/>
+    path：<input type="text" name="path"  th:value="${simReq?.path}"/>
 
     method：<select name="method">
-                <option value="GET">GET</option>
-                <option value="POST">POST</option>
+                <option value="GET" th:selected="${simReq?.method eq 'GET' }" >GET</option>
+                <option value="POST" th:selected="${simReq?.method eq 'POST' }" >POST</option>
             </select>
     <br/>
-    <input type="text" name="conditions" th:value="*{conditions[0]}"/>  --> <input type="text" name="results" th:value="*{results[0]}"/>
-    <br/>
-    <input type="text" name="conditions" th:value="*{conditions[1]}"/>  --> <input type="text" name="results" th:value="*{results[1]}"/>
 
-    <br/>
-    <input type="submit" value="确认"/>
+
+    <div style="float: left;width:50%;">
+        <ul th:each="condition : ${simReq?.conditions}">
+            <li><input type="text" name="conditions" th:value="${condition}"/></li>
+        </ul>
+    </div>
+    <div style="float: left;width: 50%;">
+        <ul th:each="result : ${simReq?.results}">
+            <li><input type="text" name="results" th:value="${result}"/></li>
+        </ul>
+    </div>
+
+
+    <div style="float: left;width:50%;" th:if=" ${simReq?.conditions} == null">
+        <ul >
+            <li><input type="text" name="conditions" value="a==1 || b ==1"/></li>
+            <li><input type="text" name="conditions" value="a==2 || b ==2"/></li>
+        </ul>
+    </div>
+    <div style="float: left;width: 50%;" th:if=" ${simReq?.conditions} == null">
+        <ul >
+            <li><input type="text" name="results" value="{'result':a}"/></li>
+            <li><input type="text" name="results" value="{'result':parseInt(a)+2}"/></li>
+        </ul>
+    </div>
+
+
+    <input type="submit" value="保存"/>
 </form>
 
 

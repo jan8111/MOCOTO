@@ -26,6 +26,9 @@ public class SimReqService {
         if(bean.getMethod()!=null){
             bean.setMethod(bean.getMethod().toUpperCase());
         }
+        if(bean.getId()!=null && bean.getId().equals("")){
+            bean.setId(null);
+        }
         SimReq en = repository.save(bean);
         if(en!=null){
             simReqCache.remove(en.getPath(),en.getMethod());
@@ -34,14 +37,12 @@ public class SimReqService {
     }
 
     public SimReq del(String id) {
-        repository.delete(id);
         SimReq en1 = repository.findOne(id);
         if(en1!=null){
-            return simReqCache.remove(en1.getPath(),en1.getMethod());
-        }else {
-            return null;
+            simReqCache.remove(en1.getPath(),en1.getMethod());
         }
-
+        repository.delete(id);
+        return en1;
     }
 
     public SimReq findOne(String id) {

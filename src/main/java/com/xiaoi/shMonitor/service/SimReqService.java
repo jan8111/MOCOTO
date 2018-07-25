@@ -9,7 +9,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AudioService {
+public class SimReqService {
 
     @Autowired
     SimReqRepository repository;
@@ -33,8 +33,18 @@ public class AudioService {
         return en;
     }
 
-    public void del(String id) {
-        //stodo remove cache
+    public SimReq del(String id) {
         repository.delete(id);
+        SimReq en1 = repository.findOne(id);
+        if(en1!=null){
+            return simReqCache.remove(en1.getPath(),en1.getMethod());
+        }else {
+            return null;
+        }
+
+    }
+
+    public SimReq findOne(String id) {
+        return repository.findOne(id);
     }
 }

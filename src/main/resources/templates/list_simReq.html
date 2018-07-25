@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<a  th:href="@{'/simReqPreAdd'}" target="_blank">新增</a>
+<a  th:href="@{'/simReqPreSave'}" target="_blank">新增</a>
 <table class="table table-striped">
     <caption>模拟服务列表</caption>
     <thead>
@@ -26,8 +26,8 @@
         <td th:text="${simReq.title}"></td>
         <td th:text="${simReq.path}" ></td>
         <td th:text="${simReq.method}" ></td>
-        <td> <a  th:href="@{'/simReqPreEdit?id='+${simReq.id}}">修改</a></td>
-        <td> <a  th:href="@{'/simReqDel?id='+${simReq.id}}">删除</a></td>
+        <td> <a  th:href="@{'/simReqPreSave?id='+${simReq.id}}" target="_blank">修改</a></td>
+        <td> <a  th:href="@{'/simReqDel?id='+${simReq.id}}" target="_blank">删除</a></td>
     </tr>
 
     </tbody>

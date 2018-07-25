@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>mocoto</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<form th:action="@{/simReqAdd}" th:method="post" th:object="${simReq}">
+    title：<input type="text" name="title" value="测试地址1"/>
+    path：<input type="text" name="path" value="/test"/>
+
+    method：<select name="method">
+                <option value="GET">GET</option>
+                <option value="POST">POST</option>
+            </select>
+    <br/>
+    <input type="text" name="conditions" value="a=1 || b =1"/>  --> <input type="text" name="results" value="{'result':a}"/>
+    <br/>
+    <input type="text" name="conditions" value="a=2 || b =2"/>  --> <input type="text" name="results" value="{'result':a+2}"/>
+
+    <br/>
+    <input type="submit" value="确认"/>
+</form>
+
+
+</body>
+</html>

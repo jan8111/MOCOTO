@@ -1,0 +1,12 @@
+server:
+  port: 8088
+  context-path: /
+
+spring:
+    data:
+        mongodb:
+               host: 172.16.9.214
+               port: 27017
+#               username: mocoto
+#               password: mocoto
+               database: mocoto

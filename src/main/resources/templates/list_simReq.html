@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>mocoto</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<a  th:href="@{'/simReqPreAdd'}" target="_blank">新增</a>
+<table class="table table-striped">
+    <caption>模拟服务列表</caption>
+    <thead>
+    <tr>
+        <th>title</th>
+        <th>path</th>
+        <th>method</th>
+        <th>修改</th>
+        <th>删除</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="simReq : ${content}">
+        <td th:text="${simReq.title}"></td>
+        <td th:text="${simReq.path}" ></td>
+        <td th:text="${simReq.method}" ></td>
+        <td> <a  th:href="@{'/simReqPreEdit?id='+${simReq.id}}">修改</a></td>
+        <td> <a  th:href="@{'/simReqDel?id='+${simReq.id}}">删除</a></td>
+    </tr>
+
+    </tbody>
+</table>
+
+</body>
+</html>
